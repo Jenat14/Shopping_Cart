@@ -33,8 +33,8 @@ export default function Product() {
   console.log({ result });
 
   return (
-    <div className="container">
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
+    <div className="container p-5">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
         {result ? (
           result.map(product => (
             <>
@@ -44,12 +44,13 @@ export default function Product() {
                     <CardDescription className="h-[20px] truncate">{product.description}</CardDescription>
                 </CardHeader>
                 <CardContent className="flex flex-col items-center justify-center">
-                <img className="h-[200px]"src={product.image} alt={product.title} />
+                <img className="h-[150px]"src={product.image} alt={product.title} />
                 <p>Price: ${product.price}</p>
                 <p>Category: {product.category}</p>
                 </CardContent>
-                <CardFooter className="flex flex-col items-center justify-center">
+                <CardFooter className="flex items-center gap-3 justify-center">
                 <Button variant="destructive">Add to cart <img className="ml-2 h-[70%]" src="src/assets/cart.png"></img></Button>
+                <Button variant="default">See more</Button>
                 </CardFooter>
             </Card>
             </>
