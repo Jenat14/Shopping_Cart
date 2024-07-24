@@ -5,7 +5,7 @@ export default function Cart(){
     return(
         <>
             <NavBar/>
-            <CartData/>
+            <CartProduct/>
         </>
     )
 }
