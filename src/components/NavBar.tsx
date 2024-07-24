@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge"
 function NavBar(){
     return(
@@ -14,10 +15,10 @@ function NavBar(){
                     <button className="bg-[#508C9B] h-[40px] w-[50px]"><img className="h-[20px] ml-3 w-[auto]"src="src\assets\Search.png"/></button>
                 </div>
                 <div className="content-center mr-3 flex items-center text-white">
-                    <a href="#" className="m-4 hover:text-zinc-400">Home</a>
+                    <Link to="/" className="m-4 hover:text-zinc-400">Home</Link>
                     <a href="#" className="m-4 hover:text-zinc-400">About</a>
                     <a href="#" className="m-4 hover:text-zinc-400">Login</a>
-                    <a href="#" className="w-[30px] h-[30px"><Badge variant="destructive">1</Badge><img src="src/assets/cart.png"/></a>
+                    <Link to="/Cart" className="w-[30px] h-[30px"><Badge variant="destructive">1</Badge><img src="src/assets/cart.png"/></Link>
                 </div>
         </div>
     </>
