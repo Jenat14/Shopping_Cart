@@ -1,3 +1,4 @@
+import { Badge } from "@/components/ui/badge"
 function NavBar(){
     return(
     <>
@@ -16,7 +17,7 @@ function NavBar(){
                     <a href="#" className="m-4 hover:text-zinc-400">Home</a>
                     <a href="#" className="m-4 hover:text-zinc-400">About</a>
                     <a href="#" className="m-4 hover:text-zinc-400">Login</a>
-                    <a href="#" className="w-[30px] h-[30px"><img src="src/assets/cart.png"/></a>
+                    <a href="#" className="w-[30px] h-[30px"><Badge variant="destructive">1</Badge><img src="src/assets/cart.png"/></a>
                 </div>
         </div>
     </>
