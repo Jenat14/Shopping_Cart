@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { Button } from "@/components/ui/Button";
 import CartData from './CartData';
+import Detail from "./Detail";
 
 import {
     Card,
@@ -12,14 +13,18 @@ import {
 } from "@/components/ui/Card";
 type Product = {
     id: number,
-    qty:number,
+    quantity:number,
     title: string,
     price: number,
+    description: string,
+    category: string,
     image: string
 };
 
 export default function cartProduct(){
 const [cartProducts, setCartProducts] = useState<Product[]>([]);
+const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
 
     useEffect(() => {
         const CartItems = localStorage.getItem("cart");
@@ -27,6 +32,9 @@ const [cartProducts, setCartProducts] = useState<Product[]>([]);
             setCartProducts(JSON.parse(CartItems));
         }
     }, []);
+    const showProductDetail = (product: Product) => {
+        setSelectedProduct(product);
+    };
 
     const Remove = (removedProduct: Product) => {
         const updatedCart = cartProducts.filter(product => product.id !== removedProduct.id);
@@ -38,6 +46,14 @@ const [cartProducts, setCartProducts] = useState<Product[]>([]);
     return (
         <>
         <CartData cartProducts={cartProducts} />
+        {selectedProduct && (
+                <div className="fixed bg-white shadow-lg border p-5 rounded-lg left-[300px] top-[70px] w-[700px] h-[500px]  z-50">
+                        <Detail product={selectedProduct} />
+                        <Button variant="default" onClick={() => setSelectedProduct(null)}>
+                                Close
+                        </Button>
+                </div>
+            )}
         <div className="flex flex-col items-center justify-center">
             {cartProducts.length > 0 ? (
                 <div className="container">
@@ -53,7 +69,7 @@ const [cartProducts, setCartProducts] = useState<Product[]>([]);
                                 </CardContent>
                                 <CardFooter className="flex items-center gap-3 justify-center">
                                     <Button variant="destructive" onClick={() => Remove(product)}>Remove</Button>
-                                    <Button variant="default">View Product</Button>
+                                    <Button variant="default"onClick={() => showProductDetail(product)}>View Product</Button>
                                 </CardFooter>
                             </Card>
                         ))}
