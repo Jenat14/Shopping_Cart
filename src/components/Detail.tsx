@@ -16,7 +16,7 @@ export default function Detail({product}:DetailProps) {
             <div className="flex gap-3">
             <img src={product.image} alt={product.title} className="w-[300px] h-[400px]" />
                 <div>
-                    <h2 className="font-bold text-2xl mb-4">{product.title}</h2>
+                    <h2 className="font-bold text-xl mb-4">{product.title}</h2>
                     <p>Category: {product.category}</p>
                     <p className='text-justify my-4 max-h-[200px] overflow-y-auto'>{product.description}</p>
                     <p className='text-lg font-bold'>Price: ${product.price}</p>

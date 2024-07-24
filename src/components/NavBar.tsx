@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { Badge } from "@/components/ui/badge"
 function NavBar(){
+
     return(
     <>
         <div className="container content-center p-2 bg-[#201E43] flex items-center">
@@ -18,7 +19,7 @@ function NavBar(){
                     <Link to="/" className="m-4 hover:text-zinc-400">Home</Link>
                     <a href="#" className="m-4 hover:text-zinc-400">About</a>
                     <a href="#" className="m-4 hover:text-zinc-400">Login</a>
-                    <Link to="/Cart" className="w-[30px] h-[30px"><Badge variant="destructive">1</Badge><img src="src/assets/cart.png"/></Link>
+                    <Link to="/Cart" className="w-[30px] h-[30px"><Badge variant="destructive">0</Badge><img src="src/assets/cart.png"/></Link>
                 </div>
         </div>
     </>

@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/Card";
 type Product = {
     id: number,
+    qty:number,
     title: string,
     price: number,
     image: string
