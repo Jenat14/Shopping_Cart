@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { toast } from 'sonner';
 import { Button } from "@/components/ui/Button";
 import CartData from './CartData';
@@ -17,8 +17,8 @@ type Product = {
     image: string
 };
 
-const CartProduct: React.FC = () => {
-    const [cartProducts, setCartProducts] = useState<Product[]>([]);
+export default function cartProduct(){
+const [cartProducts, setCartProducts] = useState<Product[]>([]);
 
     useEffect(() => {
         const CartItems = localStorage.getItem("cart");
@@ -69,4 +69,3 @@ const CartProduct: React.FC = () => {
     );
 }
 
-export default CartProduct;

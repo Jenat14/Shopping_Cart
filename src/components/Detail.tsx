@@ -1,5 +1,3 @@
-import React from 'react';
-
 type Product = {
     id: number,
     title: string,
@@ -12,8 +10,7 @@ type Product = {
 type DetailProps = {
     product: Product;
 };
-
-const Detail: React.FC<DetailProps> = ({ product }) => {
+export default function Detail({product}:DetailProps) {
     return (
         <div className="container p-2">
             <div className="flex gap-3">
@@ -28,5 +25,3 @@ const Detail: React.FC<DetailProps> = ({ product }) => {
         </div>
     );
 };
-
-export default Detail;

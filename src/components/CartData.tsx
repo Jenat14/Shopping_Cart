@@ -1,4 +1,3 @@
-import React from "react";
 import { Button } from "@/components/ui/Button";
 
 type Product = {
@@ -11,8 +10,7 @@ type Product = {
 type CartDataProps = {
     cartProducts: Product[];
 };
-
-const CartData: React.FC<CartDataProps> = ({ cartProducts }) => {
+export default function CartData({cartProducts}:CartDataProps){
     const totalItems = cartProducts.reduce((total) => total + 1, 0);
     const totalPrice = cartProducts.reduce((total, product) => total + product.price, 0);
 
@@ -28,5 +26,3 @@ const CartData: React.FC<CartDataProps> = ({ cartProducts }) => {
         </div>
     );
 };
-
-export default CartData;
