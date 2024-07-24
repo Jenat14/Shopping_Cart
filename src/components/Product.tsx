@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { hourglass } from 'ldrs'
 import { Button } from "@/components/ui/Button"
 import { toast } from "sonner"
+import Detail from "./Detail";
 
 import {
     Card,
@@ -35,24 +36,36 @@ const AddToCart = (product: Product) => {
 
 export default function Product() {
     const [result, setResult] = useState<Product[] | null>(null);
+    const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
             .then(json => setResult(json))
             .catch(error => console.error('Error fetching data:', error));
     }, []);
-
+    const showProductDetail = (product: Product) => {
+        setSelectedProduct(product);
+    };
     console.log({ result });
 
     return (
-        <div className="container p-5">
+        <div className="container p-5 relative">
+            {selectedProduct && (
+                <div className="fixed bg-white shadow-lg border p-5 rounded-lg left-[300px] top-[70px] w-[700px] h-[500px]  z-50">
+                        <Detail product={selectedProduct} />
+                        <Button variant="default" onClick={() => setSelectedProduct(null)}>
+                                Close
+                        </Button>
+                </div>
+            )}
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {result ? (
                     result.map(product => (
                         <Card key={product.id} className="text-center flex flex-col justify-between">
                             <CardHeader>
                                 <CardTitle>{product.title}</CardTitle>
-                                <CardDescription className="h-[20px] truncate">{product.description}</CardDescription>
                             </CardHeader>
                             <CardContent className="flex flex-col items-center justify-center">
                                 <img className="h-[150px]" src={product.image} alt={product.title} />
@@ -61,7 +74,7 @@ export default function Product() {
                             </CardContent>
                             <CardFooter className="flex items-center gap-3 justify-center">
                                 <Button variant="destructive" onClick={() => AddToCart(product)}>Add to cart <img className="ml-2 h-[70%]" src="src/assets/cart.png" alt="Cart Icon" /></Button>
-                                <Button variant="default">See more</Button>
+                                <Button variant="default" onClick={() => showProductDetail(product)}>See more</Button>
                             </CardFooter>
                         </Card>
                     ))
