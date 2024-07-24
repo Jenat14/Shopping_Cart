@@ -1,5 +1,14 @@
 import { useState, useEffect } from "react";
 import { hourglass } from 'ldrs'
+import { Button } from "@/components/ui/Button"
+import {
+    Card,
+    CardContent,
+    CardDescription,
+    CardFooter,
+    CardHeader,
+    CardTitle,
+  } from "@/components/ui/Card";
 hourglass.register()
 
 type Product = {
@@ -28,13 +37,22 @@ export default function Product() {
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-3">
         {result ? (
           result.map(product => (
-            <div key={product.id} className="product">
-              <h2>{product.title}</h2>
-              <p>{product.description}</p>
-              <p>Price: ${product.price}</p>
-              <p>Category: {product.category}</p>
-              <img src={product.image} alt={product.title} />
-            </div>
+            <>
+            <Card className="text-center flex flex-col justify-between">
+                <CardHeader>
+                    <CardTitle>{product.title}</CardTitle>
+                    <CardDescription className="h-[20px] truncate">{product.description}</CardDescription>
+                </CardHeader>
+                <CardContent className="flex flex-col items-center justify-center">
+                <img className="h-[200px]"src={product.image} alt={product.title} />
+                <p>Price: ${product.price}</p>
+                <p>Category: {product.category}</p>
+                </CardContent>
+                <CardFooter className="flex flex-col items-center justify-center">
+                <Button variant="destructive">Add to cart <img className="ml-2 h-[70%]" src="src/assets/cart.png"></img></Button>
+                </CardFooter>
+            </Card>
+            </>
           ))
         ) : (
                 <div className="h-[100vh] w-[100vw] flex justify-center items-center">
