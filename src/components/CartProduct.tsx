@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import { hourglass } from 'ldrs'
-import { Button } from "@/components/ui/Button"
+import React, { useState, useEffect } from 'react';
+import { Button } from "@/components/ui/Button";
+import CartData from './CartData';
+
 import {
     Card,
     CardContent,
@@ -8,22 +9,14 @@ import {
     CardHeader,
     CardTitle,
 } from "@/components/ui/Card";
-hourglass.register()
-
 type Product = {
     id: number,
     title: string,
     price: number,
-    description: string,
-    category: string,
     image: string
 };
 
-interface CartProductProps {
-    products: Product[] | null;
-}
-
-const CartProduct = ({ products }: CartProductProps) => {
+const CartProduct: React.FC = () => {
     const [cartProducts, setCartProducts] = useState<Product[]>([]);
 
     useEffect(() => {
@@ -40,6 +33,8 @@ const CartProduct = ({ products }: CartProductProps) => {
     };
 
     return (
+        <>
+        <CartData cartProducts={cartProducts} />
         <div className="flex flex-col items-center justify-center">
             {cartProducts.length > 0 ? (
                 <div className="container">
@@ -62,12 +57,13 @@ const CartProduct = ({ products }: CartProductProps) => {
                     </div>
                 </div>
             ) : (
-                <div className="flex flex-col items-center justify-center  min-h-screen">
+                <div className="flex flex-col items-center justify-center min-h-screen">
                     <img src="src/assets/cart-black.png" alt="Cart Icon" className="mb-4" />
                     <p className="font-bold text-lg">Your Cart is Empty</p>
                 </div>
             )}
         </div>
+        </>
     );
 }
 
