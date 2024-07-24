@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { hourglass } from 'ldrs'
 import { Button } from "@/components/ui/Button"
+
 import {
     Card,
     CardContent,
@@ -31,7 +32,6 @@ const AddToCart = (product: Product) => {
 
 export default function Product() {
     const [result, setResult] = useState<Product[] | null>(null);
-
     useEffect(() => {
         fetch('https://fakestoreapi.com/products')
             .then(res => res.json())
