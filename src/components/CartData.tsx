@@ -13,7 +13,7 @@ type CartDataProps = {
 };
 
 const CartData: React.FC<CartDataProps> = ({ cartProducts }) => {
-    const totalItems = cartProducts.reduce((total, product) => total + 1, 0);
+    const totalItems = cartProducts.reduce((total) => total + 1, 0);
     const totalPrice = cartProducts.reduce((total, product) => total + product.price, 0);
 
     return (

@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { toast } from 'sonner';
 import { Button } from "@/components/ui/Button";
 import CartData from './CartData';
 
@@ -30,6 +31,7 @@ const CartProduct: React.FC = () => {
         const updatedCart = cartProducts.filter(product => product.id !== removedProduct.id);
         setCartProducts(updatedCart);
         localStorage.setItem("cart", JSON.stringify(updatedCart));
+        toast("Item Removed from Cart.")
     };
 
     return (

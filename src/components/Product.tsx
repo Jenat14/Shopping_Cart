@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { hourglass } from 'ldrs'
 import { Button } from "@/components/ui/Button"
+import { toast } from "sonner"
 
 import {
     Card,
@@ -28,6 +29,8 @@ const AddToCart = (product: Product) => {
     cart.push(product);
     localStorage.setItem("cart", JSON.stringify(cart))
     console.log(cart);
+    toast("Item Added to Cart.")
+
 }
 
 export default function Product() {
