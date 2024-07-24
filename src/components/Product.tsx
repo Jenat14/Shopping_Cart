@@ -7,7 +7,6 @@ import Detail from "./Detail";
 import {
     Card,
     CardContent,
-    CardDescription,
     CardFooter,
     CardHeader,
     CardTitle,
