@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { hourglass } from 'ldrs'
 import { Button } from "@/components/ui/Button"
 import { toast } from "sonner"
+import Cart from "../assets/cart.png";
 import Detail from "./Detail";
 
 import {
@@ -72,7 +73,7 @@ export default function Product() {
                                 <p>Category: {product.category}</p>
                             </CardContent>
                             <CardFooter className="flex items-center gap-3 justify-center">
-                                <Button variant="destructive" onClick={() => AddToCart(product)}>Add to cart <img className="ml-2 h-[70%]" src="src/assets/cart.png" alt="Cart Icon" /></Button>
+                                <Button variant="destructive" onClick={() => AddToCart(product)}>Add to cart <img className="ml-2 h-[70%]" src={Cart} alt="Cart Icon" /></Button>
                                 <Button variant="default" onClick={() => showProductDetail(product)}>See more</Button>
                             </CardFooter>
                         </Card>
