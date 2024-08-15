@@ -15,3 +15,7 @@ This project is a shopping cart application developed using React, Vite, TypeScr
 * TailwindCSS: Utility-first CSS framework used for creating custom designs and responsive layouts.
 * FakeStore API: Provides product data for the application.
 * Shadcn: Provides design components to enhance the user interface.
+## Output Screenshots
+[HomePage](./src/assets/home.png)
+[Items](./src/assets/see%20more.png)
+[Cart](./src/assets/cart%20items.png)
