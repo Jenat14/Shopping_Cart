@@ -49,7 +49,7 @@ export default function cartProduct() {
     <>
       <CartData cartProducts={cartProducts} />
       {selectedProduct && (
-        <div className="fixed bg-white shadow-lg border p-5 rounded-lg left-[300px] top-[70px] w-[700px] h-[500px]  z-50">
+      <div className="fixed bg-white shadow-lg border p-5 rounded-lg left-1/2 top-1/2 transform -translate-x-1/2 -translate-y-1/2 w-full max-w-[90%] md:max-w-[700px] h-auto md:h-[500px] z-50">
           <Detail product={selectedProduct} />
           <Button variant="default" onClick={() => setSelectedProduct(null)}>
             Close

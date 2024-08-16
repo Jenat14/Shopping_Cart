@@ -21,10 +21,10 @@ export default function CartData({ cartProducts }: CartDataProps) {
   }, [cartProducts, totalItems]);
   return (
     <div className="text-center flex gap-3 justify-evenly my-4">
-      <div className="bg-gray-200 w-[400px] p-4 rounded-lg">
+      <div className="bg-gray-200 content-center w-[400px] p-4 rounded-lg">
         <p>Total Items: {totalItems}</p>
       </div>
-      <div className="bg-gray-200 w-[400px] p-4 rounded-lg">
+      <div className="bg-gray-200 content-center w-[400px] p-4 rounded-lg">
         <p>Total Price: ${totalPrice.toFixed(2)}</p>
       </div>
       <Button
