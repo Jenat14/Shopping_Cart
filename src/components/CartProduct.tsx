@@ -20,6 +20,7 @@ type Product = {
   description: string;
   category: string;
   image: string;
+
 };
 
 export default function cartProduct() {
@@ -43,6 +44,17 @@ export default function cartProduct() {
     setCartProducts(updatedCart);
     localStorage.setItem("cart", JSON.stringify(updatedCart));
     toast("Item Removed from Cart.");
+  };
+
+  const updateQuantity = (id: number, newQuantity: number) => {
+    const updatedCart = cartProducts.map((product) => {
+      if (product.id === id) {
+        return { ...product, quantity: newQuantity };
+      }
+      return product;
+    });
+    setCartProducts(updatedCart);
+    localStorage.setItem("cart", JSON.stringify(updatedCart));
   };
 
   return (
@@ -76,19 +88,45 @@ export default function cartProduct() {
                     />
                     <p>Price: ${product.price}</p>
                   </CardContent>
-                  <CardFooter className="flex items-center gap-3 justify-center">
-                    <Button
-                      variant="destructive"
-                      onClick={() => Remove(product)}
-                    >
-                      Remove
+                  <CardFooter className="flex flex-col gap-3">
+                  <div className="flex items-center space-x-2">
+                    <Button variant="outline" onClick={() =>
+                          updateQuantity(
+                            product.id,
+                            Math.max(1, product.quantity - 1)
+                          )
+                        }>
+                      -
                     </Button>
-                    <Button
-                      variant="default"
-                      onClick={() => showProductDetail(product)}
-                    >
-                      View Product
+                    <input
+                      type="number"
+                      readOnly
+                      value={product.quantity}
+                      className="w-12 text-center h-10 border border-gray-300 rounded"
+                    />
+                    <Button variant="outline" onClick={() =>
+                          updateQuantity(
+                            product.id,
+                            Math.min(5, product.quantity + 1)
+                          )
+                        }>
+                      +
                     </Button>
+                  </div>
+                    <div  className="flex items-center gap-3 justify-center">
+                      <Button
+                        variant="destructive"
+                        onClick={() => Remove(product)}
+                      >
+                        Remove
+                      </Button>
+                      <Button
+                        variant="default"
+                        onClick={() => showProductDetail(product)}
+                      >
+                        View Product
+                      </Button>
+                    </div>
                   </CardFooter>
                 </Card>
               ))}

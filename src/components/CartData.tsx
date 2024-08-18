@@ -5,6 +5,7 @@ type Product = {
   title: string;
   price: number;
   image: string;
+  quantity:number;
 };
 
 type CartDataProps = {
@@ -13,7 +14,7 @@ type CartDataProps = {
 export default function CartData({ cartProducts }: CartDataProps) {
   const totalItems = cartProducts.reduce((total) => total + 1, 0);
   const totalPrice = cartProducts.reduce(
-    (total, product) => total + product.price,
+    (total, product) => total +(product.quantity)* product.price,
     0
   );
   useEffect(() => {
