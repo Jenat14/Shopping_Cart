@@ -12,7 +12,7 @@ type CartDataProps = {
   cartProducts: Product[];
 };
 export default function CartData({ cartProducts }: CartDataProps) {
-  const totalItems = cartProducts.reduce((total) => total + 1, 0);
+  const totalItems = cartProducts.reduce((total,product) => total + product.quantity, 0);
   const totalPrice = cartProducts.reduce(
     (total, product) => total +(product.quantity)* product.price,
     0
